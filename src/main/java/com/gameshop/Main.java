@@ -19,7 +19,7 @@ public class Main {
         System.out.println("\n--- 2. TEST DE VENTAS ---");
         // Un juego de 100€ con descuento VIP debería costar menos de 100€ + IVA.
         // BUG: El cliente VIP acaba pagando MÁS que un cliente normal.
-        double precioFinal = ventas.c(100.0, true);
+        double precioFinal = ventas.calcularPrecioFinal(100.0, true);
         System.out.println("Precio final cobrado al VIP: " + precioFinal + " EUR");
 
         // --- PRUEBA ALUMNO 3: RECOMPENSAS VIP ---
