@@ -16,24 +16,29 @@ public class SistemaRecompensasVip {
     }
 
     public String generarReporte(int puntos) {
-        String r = "";
+        String reporteFinal = "";
 
         // CODE SMELL CRÍTICO: Concatenación de Strings en un bucle con '+' (usar StringBuilder)
-        for (int i = 0; i < puntos; i++) {
-            r = r + "*";
-        }
+        reporteFinal = construirBarraProgreso(puntos, reporteFinal);
 
         // CODE SMELL: Complejidad Cognitiva alta (Escalera de Ifs)
         if (puntos > 0) {
             if (puntos >= PUNTOS_NIVEL_ORO) {
                 if (puntos >= PUNTOS_NIVEL_LEYENDA) {
-                    r = r + " ¡CLIENTE LEYENDA!";
+                    reporteFinal = reporteFinal + " ¡CLIENTE LEYENDA!";
                 } else {
-                    r = r + " ¡CLIENTE ORO!";
+                    reporteFinal = reporteFinal + " ¡CLIENTE ORO!";
                 }
             }
         }
 
-        return r;
+        return reporteFinal;
+    }
+
+    private static String construirBarraProgreso(int puntos, String reporteFinal) {
+        for (int i = 0; i < puntos; i++) {
+            reporteFinal = reporteFinal + "*";
+        }
+        return reporteFinal;
     }
 }
