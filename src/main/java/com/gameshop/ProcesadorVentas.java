@@ -1,5 +1,8 @@
 package com.gameshop;
-
+/**
+ * Clase que gestiona el cálculo de ventas de la tienda GameShop.
+ * @author Luis
+ */
 public class ProcesadorVentas {
     private static final double DESCUENTO_VIP = 0.15;
     private static final double IVA = 1.21;
