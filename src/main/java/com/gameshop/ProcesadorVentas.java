@@ -14,7 +14,7 @@ public class ProcesadorVentas {
         }
 
         // BUG LÓGICO: Al VIP se le está SUMANDO el descuento al precio original, encareciendo el juego.
-        double pf = p + d;
+        double pf = p - d;
 
         // CODE SMELL: Magic Number (1.21 representa el 21% de IVA)
         pf = pf * 1.21;
