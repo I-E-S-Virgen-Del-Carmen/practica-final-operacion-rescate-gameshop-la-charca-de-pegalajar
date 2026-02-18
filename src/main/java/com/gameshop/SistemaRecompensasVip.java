@@ -5,7 +5,7 @@ public class SistemaRecompensasVip {
     public boolean comprobarVip(String tipoCliente) {
         // BUG (NPE): Si 'tipoCliente' es null (como pasa en el Main), intentar hacer .equals() lanza un NullPointerException.
         // SOLUCIÓN SONARLINT: Escribir "Premium".equals(tipoCliente)
-        if (tipoCliente.equals("Premium")) {
+        if ("Premium".equals(tipoCliente)) {
             return true;
         } else {
             return false;
