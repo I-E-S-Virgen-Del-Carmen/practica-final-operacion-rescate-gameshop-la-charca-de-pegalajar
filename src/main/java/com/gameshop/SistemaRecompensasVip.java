@@ -1,44 +1,55 @@
 package com.gameshop;
 
+/**
+ * Gestiona el sistema de recompensas y niveles de fidelización para clientes VIP.
+ * @author Jose Murciano
+ */
 public class SistemaRecompensasVip {
 
     public static final int PUNTOS_NIVEL_ORO = 100;
     public static final int PUNTOS_NIVEL_LEYENDA = 500;
 
+    /**
+     * Valida si un tipo de cliente tiene rango Premium de forma segura.
+     * @param tipoCliente El nombre del tipo de cliente.
+     * @return true si es "Premium", false si es otro tipo o null.
+     */
     public boolean comprobarVip(String tipoCliente) {
         // BUG (NPE): Si 'tipoCliente' es null (como pasa en el Main), intentar hacer .equals() lanza un NullPointerException.
         // SOLUCIÓN SONARLINT: Escribir "Premium".equals(tipoCliente)
-        if ("Premium".equals(tipoCliente)) {
-            return true;
-        } else {
-            return false;
-        }
+        return "Premium".equals(tipoCliente);
     }
 
+    /**
+     * Genera un informe visual del progreso del cliente basado en sus puntos.
+     * @param puntos Cantidad de puntos acumulados.
+     * @return Cadena con barra de progreso y etiqueta de nivel.
+     */
     public String generarReporte(int puntos) {
-        String reporteFinal = "";
-
         // CODE SMELL CRÍTICO: Concatenación de Strings en un bucle con '+' (usar StringBuilder)
-        reporteFinal = construirBarraProgreso(puntos, reporteFinal);
+        StringBuilder reporteFinal = construirBarraProgreso(puntos);
 
         // CODE SMELL: Complejidad Cognitiva alta (Escalera de Ifs)
-        if (puntos > 0) {
-            if (puntos >= PUNTOS_NIVEL_ORO) {
-                if (puntos >= PUNTOS_NIVEL_LEYENDA) {
-                    reporteFinal = reporteFinal + " ¡CLIENTE LEYENDA!";
-                } else {
-                    reporteFinal = reporteFinal + " ¡CLIENTE ORO!";
-                }
-            }
+        // Refactorizado para usar una estructura plana de else-if
+        if (puntos >= PUNTOS_NIVEL_LEYENDA) {
+            reporteFinal.append(" ¡CLIENTE LEYENDA!");
+        } else if (puntos >= PUNTOS_NIVEL_ORO) {
+            reporteFinal.append(" ¡CLIENTE ORO!");
         }
 
-        return reporteFinal;
+        return reporteFinal.toString();
     }
 
-    private static String construirBarraProgreso(int puntos, String reporteFinal) {
+    /**
+     * Crea una representación visual mediante asteriscos de los puntos.
+     * @param puntos Cantidad de asteriscos a generar.
+     * @return StringBuilder con la barra de progreso generada.
+     */
+    private static StringBuilder construirBarraProgreso(int puntos) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < puntos; i++) {
-            reporteFinal = reporteFinal + "*";
+            sb.append("*");
         }
-        return reporteFinal;
+        return sb;
     }
 }
