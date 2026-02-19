@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"com.gameshop","l":"GestorInventario"},{"p":"com.gameshop","l":"Main"},{"p":"com.gameshop","l":"ProcesadorVentas"},{"p":"com.gameshop","l":"SistemaRecompensasVip"}];updateSearchResults();

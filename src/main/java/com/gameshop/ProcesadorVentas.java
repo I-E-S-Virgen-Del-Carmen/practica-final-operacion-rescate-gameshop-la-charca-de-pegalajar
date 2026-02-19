@@ -1,4 +1,5 @@
 package com.gameshop;
+
 /**
  * Clase que gestiona el cálculo de ventas de la tienda GameShop.
  * @author Luis
@@ -25,8 +26,9 @@ public class ProcesadorVentas {
         PrecioTotal = PrecioTotal * IVA;
 
         return PrecioTotal;
-        private double aplicarIva(double precio) {
-            return precio * IVA;
-        }
+    }
+
+    private double aplicarIva(double precio) {
+        return precio * IVA;
     }
 }
